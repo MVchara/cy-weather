@@ -18,13 +18,13 @@ COPY pyproject.toml uv.lock ./
 
 # Install the project's dependencies
 # Note: Using --no-install-project to install only dependencies first
-RUN uv sync --locked --no-install-project --no-dev
+RUN uv sync --no-install-project --no-dev
 
 # Copy the rest of the project source code
 COPY . /app
 
 # Install the project itself
-RUN uv sync --locked --no-dev
+RUN uv sync --no-dev
 
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
